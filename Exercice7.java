@@ -9,7 +9,45 @@ class Exercice7 {
         int mois = sc.nextInt();
         System.out.println("Veuillez saisir un jour:");
         int jour = sc.nextInt();
-        Boolean valid = (jour>31) : false : ((jour>30) ? ((mois<8) ? ((mois%2==1) ? true : false) : ((mois%2==0) ? true : false)) : ((jour==29) ? ((mois==2) ? ((annee%100==0) ? ((annee%400==0) ? true : false) : ((annee%4==0) ? true : false)) : true) : true);
+        Boolean valid = true;
+        if (jour>31) {
+            valid = false;
+        } else if (jour>30) {
+            if (mois<8) {
+                if (mois%2==1) {
+                    valid = true;
+                } else {
+                    valid = false;
+                }
+            } else {
+                if (mois%2==1) {
+                    valid = false;
+                } else {
+                    valid = true;
+                }
+            }
+        } else if (jour==29) {
+            if (mois==2) {
+                if (annee%100==0) {
+                    if (annee%400==0) {
+                        valid = true;
+                    } else {
+                        valid = false;
+                    }
+                } else {
+                    if (annee%4==0) {
+                        valid = true;
+                    } else {
+                        valid = false;
+                    }
+                }
+            } else {
+                valid = true;
+            }
+        } else {
+            valid = true;
+        }
+        
         String date = (valid==true) ? "valide" : "invalide";
         System.out.println("Cette date est " + date);
 	}
